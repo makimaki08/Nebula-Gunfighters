@@ -19,7 +19,7 @@ public class Debri : MonoBehaviour
         Transform target = GameObject.Find("Earth").transform;
         // Earthオブジェクトの位置情報を取得する
         targetPos = target.position;
-        // 宇宙ごみの正面飲むきを、Earthの方向に向ける
+        // 宇宙ごみの正面のむきを、Earthの方向に向ける
         transform.LookAt(target);
         // 宇宙ごみを0から360の範囲でZ軸を中心に回転させておく
         transform.Rotate(new Vector3(0, 0, Random.Range(0, 360)), Space.World);
