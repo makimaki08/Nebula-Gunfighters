@@ -17,7 +17,7 @@ public class SpawnPoint : MonoBehaviour
     }
 
     // 宇宙ごみ発生
-    IEnumerator SpawwnDebris()
+    IEnumerator SpawnDevris()
     {
         // 無限ループ
         while (true)
