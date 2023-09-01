@@ -12,6 +12,7 @@ public class Score : MonoBehaviour
     void Awake()
     {
         text = GetComponent<Text>();
+        InitScore(); // スコア初期化の関数を呼び出し
     }
 
     // スコアを初期化する
