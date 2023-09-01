@@ -1,0 +1,66 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Timer : MonoBehaviour
+{
+    // 残り時間の初期値
+    public int timeLimit = 30;
+    private Text text;
+
+    // 残り時間
+    private float timeRemaining;
+    // タイマー動作フラグ
+    private bool timerStarted;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        text = GetComponent<Text>();
+        ResetTimer();
+    }
+
+    // タイマーをリセット
+    public void ResetTimer()
+    {
+        timeRemaining = timeLimit;
+        timerStarted = false;
+    }
+
+    // タイマーを開始
+    public void StartTimer()
+    {
+        timerStarted = true;
+    }
+
+    // タイマー停止
+    public void StopTimer()
+    {
+        timerStarted = false;
+    }
+
+    // 残り時間を取得
+    public float GetTimeRemaining()
+    {
+        return timeRemaining;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (timerStarted)
+        {
+            // 残り時間を引いていく
+            timeRemaining -= Time.deltaTime;
+            if (timeRemaining <= 0)
+            {
+                // 残り時間が0以下ならタイマーを停止する
+                timeRemaining = 0;
+                timerStarted = false;
+            }
+        }
+        // テキストを更新
+        text.text = "Time:" + timeRemaining;
+    }
+}
