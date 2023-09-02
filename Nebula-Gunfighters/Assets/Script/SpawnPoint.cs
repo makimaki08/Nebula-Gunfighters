@@ -22,6 +22,16 @@ public class SpawnPoint : MonoBehaviour
         }
     }
 
+    // 宇宙ごみ発生停止
+    void StopSpawn()
+    {
+        if (spawnStarted)
+        {
+            spawnStarted = false;
+            StopCoroutine("SpawnDebris");
+        }
+    }
+
 
     // 宇宙ごみ発生
     IEnumerator SpawnDebris()
