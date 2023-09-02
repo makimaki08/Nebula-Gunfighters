@@ -9,15 +9,32 @@ public class SpawnPoint : MonoBehaviour
     // 宇宙ごみ発生間隔
     public float interbal = 1F;
 
-    // Start is called before the first frame update
-    void Start()
+    // 宇宙ごみを発生中であることを表すフラグ
+    private bool spawnStarted = false;
+
+    // 宇宙ごみ発生開始
+    void StartSpawn()
     {
-        // SpawnDevris() コルーチンを開始する
-        StartCoroutine("SpawnDevris");
+        if (!spawnStarted)
+        {
+            spawnStarted = true;
+            StartCoroutine("SpawnDebris");
+        }
     }
 
+    // 宇宙ごみ発生停止
+    void StopSpawn()
+    {
+        if (spawnStarted)
+        {
+            spawnStarted = false;
+            StopCoroutine("SpawnDebris");
+        }
+    }
+
+
     // 宇宙ごみ発生
-    IEnumerator SpawnDevris()
+    IEnumerator SpawnDebris()
     {
         // 無限ループ
         while (true)

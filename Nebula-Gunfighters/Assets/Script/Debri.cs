@@ -35,6 +35,8 @@ public class Debri : MonoBehaviour
 
     void OnMouseDown()
     {
+        // スコアを加算する
+        GameObject.Find("Score").SendMessage("AddScore", score);
         // クリックされたら宇宙ごみを消す
         Destroy(gameObject);
     }
